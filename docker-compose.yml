@@ -28,6 +28,8 @@ services:
       - ./logs:/usr/local/lsws/logs/
     ports:
       - 6080:80
+      - 6443:443
+      - 6443:443/udp
       - 7080:7080
     restart: always
     environment:
