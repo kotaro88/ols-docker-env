@@ -28,6 +28,7 @@ services:
       - ./logs:/usr/local/lsws/logs/
     ports:
       - "127.0.0.1:6080:80"
+      - 6443:443
       - "7080:7080"
     restart: always
     environment:
