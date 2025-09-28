@@ -90,7 +90,13 @@ define( 'WP_DEBUG', false );
 /* Add any custom values between this line and the "stop editing" line. */
 
 
+define('WP_HOME', 'https://labantamlinh.vn');
+define('WP_SITEURL', 'https://labantamlinh.vn');
 
+// Nếu Caddy proxy vào bằng HTTP (6080), cần báo cho WP biết request gốc là HTTPS
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
