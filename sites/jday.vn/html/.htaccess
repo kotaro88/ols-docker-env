@@ -14,7 +14,7 @@ RewriteRule .* - [E=noabort:1]
 ### marker ASYNC end ###
 
 ### marker LOGIN COOKIE start ###
-RewriteRule .? - [E="Cache-Vary:,wp-postpass_c144972955b1c76518d635654af9a118"]
+RewriteRule .? - [E="Cache-Vary:,wp-postpass_22bba6233af1bae78c960f1f6359d7d7"]
 ### marker LOGIN COOKIE end ###
 
 ### marker DROPQS start ###
@@ -32,8 +32,15 @@ CacheKeyModify -qs:_ga
 ## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
 # END NON_LSCACHE
 # BEGIN WordPress
-# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
-# dynamically generated, and should only be modified via WordPress filters.
-# Any changes to the directives between these markers will be overwritten.
+# Các nội dung nằm giữa "BEGIN WordPress" và "END WordPress" được tạo ra tự động, và chỉ nên được thay đổi thông qua các filter của WordPress. Mọi thay đổi tới thành phần này có thể sẽ bị mất và ghi đè.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
 
 # END WordPress
